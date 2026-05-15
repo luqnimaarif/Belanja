@@ -42,38 +42,38 @@
 
     <div class="product-grid">
 
-      <div class="product-card">
-        <img src="headset.jpg">
+      <div class="product-card" onclick="pilihBarang('Headset Gaming',150000)">
+        <img src="headset.jpg" alt="Headset">
         <h3>Headset Gaming</h3>
         <p>Rp 150.000</p>
       </div>
 
-      <div class="product-card">
-        <img src="kursi.jpg">
+      <div class="product-card" onclick="pilihBarang('Kursi Gaming',900000)">
+        <img src="kursi.jpg" alt="Kursi">
         <h3>Kursi Gaming</h3>
         <p>Rp 900.000</p>
       </div>
 
-      <div class="product-card">
-        <img src="mouse.jpg">
+      <div class="product-card" onclick="pilihBarang('Mouse Gaming',450000)">
+        <img src="mouse.jpg" alt="Mouse">
         <h3>Mouse Gaming</h3>
         <p>Rp 450.000</p>
       </div>
 
-      <div class="product-card">
-        <img src="monitor.jpg">
+      <div class="product-card" onclick="pilihBarang('Monitor',3000000)">
+        <img src="monitor.jpg" alt="Monitor">
         <h3>Monitor</h3>
         <p>Rp 3.000.000</p>
       </div>
 
-      <div class="product-card">
-        <img src="keyboard.jpg">
+      <div class="product-card" onclick="pilihBarang('Keyboard',250000)">
+        <img src="keyboard.jpg" alt="Keyboard">
         <h3>Keyboard</h3>
         <p>Rp 250.000</p>
       </div>
 
-      <div class="product-card">
-        <img src="keyboard gaming.jpg">
+      <div class="product-card" onclick="pilihBarang('Keyboard Gaming',600000)">
+        <img src="keyboard gaming.jpg" alt="Keyboard Gaming">
         <h3>Keyboard Gaming</h3>
         <p>Rp 600.000</p>
       </div>
@@ -86,10 +86,10 @@
     <h2>🛒 Checkout Barang</h2>
 
     <label>Nama Barang:</label>
-    <input type="text" id="barang" value="Keyboard Gaming" readonly>
+    <input type="text" id="barang" readonly>
 
     <label>Harga:</label>
-    <input type="text" id="harga" value="250000" readonly>
+    <input type="text" id="harga" readonly>
 
     <label>Masukkan Kupon:</label>
     <input type="text" id="kupon" placeholder="Contoh: LUQNI / YADIKA2">
@@ -97,7 +97,7 @@
     <button onclick="cekKupon()">Gunakan Kupon</button>
 
     <h3 id="diskonText">Diskon: Rp 0</h3>
-    <h2 id="totalBayar">Total: Rp 250.000</h2>
+    <h2 id="totalBayar">Total: Rp 0</h2>
 
     <label>Metode Pembayaran:</label>
     <select id="metode">
@@ -119,7 +119,7 @@ function register(){
   let username = document.getElementById("regUsername").value;
   let password = document.getElementById("regPassword").value;
 
-  if(username==="" || password===""){
+  if(username === "" || password === ""){
     alert("Isi semua dulu!");
     return;
   }
@@ -157,12 +157,35 @@ function showRegister(){
   document.getElementById("registerPage").style.display = "flex";
 }
 
-// KUPON
-let hargaAsli = 250000;
-let total = hargaAsli;
+// PILIH BARANG
+let hargaAsli = 0;
+let total = 0;
 
+function pilihBarang(nama, harga){
+  document.getElementById("barang").value = nama;
+  document.getElementById("harga").value = harga;
+
+  hargaAsli = harga;
+  total = harga;
+
+  document.getElementById("diskonText").innerHTML = "Diskon: Rp 0";
+  document.getElementById("totalBayar").innerHTML =
+    "Total: Rp " + total.toLocaleString("id-ID");
+
+  // Scroll ke checkout otomatis
+  document.querySelector(".checkout").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+// KUPON
 function cekKupon(){
   let kupon = document.getElementById("kupon").value.toUpperCase();
+
+  if(hargaAsli === 0){
+    alert("Pilih barang dulu!");
+    return;
+  }
 
   if(kupon === "LUQNI"){
     let diskon = hargaAsli * 0.30;
@@ -178,8 +201,7 @@ function cekKupon(){
   }
   else{
     total = hargaAsli;
-    document.getElementById("diskonText").innerHTML =
-      "Kupon tidak valid";
+    document.getElementById("diskonText").innerHTML = "Kupon tidak valid";
   }
 
   document.getElementById("totalBayar").innerHTML =
@@ -188,6 +210,11 @@ function cekKupon(){
 
 // BAYAR
 function bayar(){
+  if(hargaAsli === 0){
+    alert("Pilih barang dulu!");
+    return;
+  }
+
   let metode = document.getElementById("metode").value;
 
   alert(
