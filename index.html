@@ -8,118 +8,193 @@
 </head>
 <body>
 
-  <!-- DAFTAR -->
-  <div class="container" id="registerPage">
-    <div class="card">
-      <h1>Daftar Akun</h1>
-      <input type="text" id="regUsername" placeholder="Username">
-      <input type="password" id="regPassword" placeholder="Password">
-      <button onclick="register()">Daftar</button>
-      <p>Sudah punya akun? <a href="#" onclick="showLogin()">Login</a></p>
-    </div>
+<!-- DAFTAR -->
+<div class="container" id="registerPage">
+  <div class="card">
+    <h1>Daftar Akun</h1>
+    <input type="text" id="regUsername" placeholder="Username">
+    <input type="password" id="regPassword" placeholder="Password">
+    <button onclick="register()">Daftar</button>
+    <p>Sudah punya akun? <a href="#" onclick="showLogin()">Login</a></p>
   </div>
+</div>
 
-  <!-- LOGIN -->
-  <div class="container" id="loginPage" style="display:none;">
-    <div class="card">
-      <h1>Login</h1>
-      <input type="text" id="loginUsername" placeholder="Username">
-      <input type="password" id="loginPassword" placeholder="Password">
-      <button onclick="login()">Login</button>
-      <p>Belum punya akun? <a href="#" onclick="showRegister()">Daftar</a></p>
-    </div>
+<!-- LOGIN -->
+<div class="container" id="loginPage" style="display:none;">
+  <div class="card">
+    <h1>Login</h1>
+    <input type="text" id="loginUsername" placeholder="Username">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p>Belum punya akun? <a href="#" onclick="showRegister()">Daftar</a></p>
   </div>
+</div>
 
-  <!-- PRODUK -->
-  <div id="productPage" style="display:none;">
-    <header>
-      <h1>🛒 BelanjaKu</h1>
-    </header>
+<!-- PRODUK -->
+<div id="productPage" style="display:none;">
 
-    <section class="products">
-      <h2>Produk Kami</h2>
+  <header>
+    <h1>🛒 BelanjaKu</h1>
+  </header>
 
-      <div class="product-grid">
+  <section class="products">
+    <h2>Produk Kami</h2>
 
-        <div class="product-card">
-          <img src="keyboard.jpg">
-          <h3>Keyboard Gaming</h3>
-          <p>Rp 250.000</p>
-          <button>Beli</button>
-        </div>
+    <div class="product-grid">
 
-        <div class="product-card">
-          <img src="mouse.jpg">
-          <h3>Mouse Gaming</h3>
-          <p>Rp 150.000</p>
-          <button>Beli</button>
-        </div>
-
-        <div class="product-card">
-          <img src="monitor.jpg">
-          <h3>Monitor</h3>
-          <p>Rp 1.500.000</p>
-          <button>Beli</button>
-        </div>
-
-        <div class="product-card">
-          <img src="kursi.jpg">
-          <h3>Kursi Gaming</h3>
-          <p>Rp 900.000</p>
-          <button>Beli</button>
-        </div>
-
-        <div class="product-card">
-          <img src="headset.jpg">
-          <h3>Headset</h3>
-          <p>Rp 300.000</p>
-          <button>Beli</button>
-        </div>
-
+      <div class="product-card">
+        <img src="headset.jpg">
+        <h3>Headset Gaming</h3>
+        <p>Rp 150.000</p>
       </div>
-    </section>
-  </div>
+
+      <div class="product-card">
+        <img src="kursi.jpg">
+        <h3>Kursi Gaming</h3>
+        <p>Rp 900.000</p>
+      </div>
+
+      <div class="product-card">
+        <img src="mouse.jpg">
+        <h3>Mouse Gaming</h3>
+        <p>Rp 450.000</p>
+      </div>
+
+      <div class="product-card">
+        <img src="monitor.jpg">
+        <h3>Monitor</h3>
+        <p>Rp 3.000.000</p>
+      </div>
+
+      <div class="product-card">
+        <img src="keyboard.jpg">
+        <h3>Keyboard</h3>
+        <p>Rp 250.000</p>
+      </div>
+
+      <div class="product-card">
+        <img src="keyboard gaming.jpg">
+        <h3>Keyboard Gaming</h3>
+        <p>Rp 600.000</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section class="checkout">
+    <h2>🛒 Checkout Barang</h2>
+
+    <label>Nama Barang:</label>
+    <input type="text" id="barang" value="Keyboard Gaming" readonly>
+
+    <label>Harga:</label>
+    <input type="text" id="harga" value="250000" readonly>
+
+    <label>Masukkan Kupon:</label>
+    <input type="text" id="kupon" placeholder="Contoh: LUQNI / YADIKA2">
+
+    <button onclick="cekKupon()">Gunakan Kupon</button>
+
+    <h3 id="diskonText">Diskon: Rp 0</h3>
+    <h2 id="totalBayar">Total: Rp 250.000</h2>
+
+    <label>Metode Pembayaran:</label>
+    <select id="metode">
+      <option>DANA</option>
+      <option>GoPay</option>
+      <option>OVO</option>
+      <option>Transfer Bank</option>
+      <option>COD</option>
+    </select>
+
+    <button onclick="bayar()">Bayar Sekarang</button>
+  </section>
+
+</div>
 
 <script>
+// REGISTER
 function register(){
-    let username = document.getElementById("regUsername").value;
-    let password = document.getElementById("regPassword").value;
+  let username = document.getElementById("regUsername").value;
+  let password = document.getElementById("regPassword").value;
 
-    if(username==="" || password===""){
-        alert("Isi semua dulu!");
-        return;
-    }
+  if(username==="" || password===""){
+    alert("Isi semua dulu!");
+    return;
+  }
 
-    localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
+  localStorage.setItem("username", username);
+  localStorage.setItem("password", password);
 
-    alert("Daftar berhasil, silakan login!");
-    showLogin();
+  alert("Daftar berhasil!");
+  showLogin();
 }
 
+// LOGIN
 function login(){
-    let username = document.getElementById("loginUsername").value;
-    let password = document.getElementById("loginPassword").value;
+  let username = document.getElementById("loginUsername").value;
+  let password = document.getElementById("loginPassword").value;
 
-    let savedUser = localStorage.getItem("username");
-    let savedPass = localStorage.getItem("password");
+  let savedUser = localStorage.getItem("username");
+  let savedPass = localStorage.getItem("password");
 
-    if(username===savedUser && password===savedPass){
-        document.getElementById("loginPage").style.display="none";
-        document.getElementById("productPage").style.display="block";
-    }else{
-        alert("Username atau password salah!");
-    }
+  if(username === savedUser && password === savedPass){
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("productPage").style.display = "block";
+  } else {
+    alert("Username atau password salah!");
+  }
 }
 
 function showLogin(){
-    document.getElementById("registerPage").style.display="none";
-    document.getElementById("loginPage").style.display="flex";
+  document.getElementById("registerPage").style.display = "none";
+  document.getElementById("loginPage").style.display = "flex";
 }
 
 function showRegister(){
-    document.getElementById("loginPage").style.display="none";
-    document.getElementById("registerPage").style.display="flex";
+  document.getElementById("loginPage").style.display = "none";
+  document.getElementById("registerPage").style.display = "flex";
+}
+
+// KUPON
+let hargaAsli = 250000;
+let total = hargaAsli;
+
+function cekKupon(){
+  let kupon = document.getElementById("kupon").value.toUpperCase();
+
+  if(kupon === "LUQNI"){
+    let diskon = hargaAsli * 0.30;
+    total = hargaAsli - diskon;
+    document.getElementById("diskonText").innerHTML =
+      "Diskon 30%: Rp " + diskon.toLocaleString("id-ID");
+  }
+  else if(kupon === "YADIKA2"){
+    let diskon = hargaAsli * 0.50;
+    total = hargaAsli - diskon;
+    document.getElementById("diskonText").innerHTML =
+      "Diskon 50%: Rp " + diskon.toLocaleString("id-ID");
+  }
+  else{
+    total = hargaAsli;
+    document.getElementById("diskonText").innerHTML =
+      "Kupon tidak valid";
+  }
+
+  document.getElementById("totalBayar").innerHTML =
+    "Total: Rp " + total.toLocaleString("id-ID");
+}
+
+// BAYAR
+function bayar(){
+  let metode = document.getElementById("metode").value;
+
+  alert(
+    "Pembayaran berhasil!\n" +
+    "Metode: " + metode + "\n" +
+    "Total: Rp " + total.toLocaleString("id-ID")
+  );
 }
 </script>
 
