@@ -1,52 +1,104 @@
+body{
+  margin:0;
+  padding:0;
+  font-family:Arial, sans-serif;
+  background:#f2f2f2;
+}
+
+/* LOGIN & DAFTAR */
+.container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  width:100%;
+  max-width:350px;
+  padding:25px;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h1{
+  font-size:32px;   /* tadi terlalu besar */
+  text-align:center;
+  margin-bottom:20px;
+}
+
+input{
+  width:100%;
+  padding:15px;
+  margin-bottom:15px;
+  font-size:18px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  box-sizing:border-box;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  background:blue;
+  color:white;
+  border:none;
+  border-radius:10px;
+  font-size:22px;
+}
+
+/* HEADER */
+header{
+  background:white;
+  padding:15px;
+  text-align:center;
+}
+
+header h1{
+  font-size:32px;
+  margin:0;
+}
+
+/* PRODUK */
 .products{
-    padding:20px;
+  padding:15px;
 }
 
 .products h2{
-    text-align:center;
-    margin-bottom:20px;
-    color:#1e40af;
-    font-size:28px;
+  font-size:28px;
+  margin-bottom:15px;
 }
 
 .product-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
-    gap:15px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr); /* 2 produk per baris */
+  gap:15px;
 }
 
 .product-card{
-    background:white;
-    border-radius:15px;
-    padding:10px;
-    text-align:center;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  background:white;
+  border-radius:12px;
+  padding:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  text-align:center;
 }
 
 .product-card img{
-    width:100%;
-    height:140px;
-    object-fit:cover;
-    border-radius:10px;
+  width:100%;
+  height:120px;   /* gambar diperkecil */
+  object-fit:cover;
+  border-radius:10px;
 }
 
 .product-card h3{
-    margin:10px 0 5px;
-    font-size:18px;
+  font-size:18px;
+  margin:10px 0 5px;
 }
 
 .product-card p{
-    color:#1e40af;
-    font-weight:bold;
-    margin-bottom:10px;
-}
-
-.product-card button{
-    background:#1e40af;
-    color:white;
-    border:none;
-    padding:10px 20px;
-    border-radius:8px;
-    cursor:pointer;
-    width:100%;
+  font-size:16px;
+  color:blue;
+  font-weight:bold;
 }
