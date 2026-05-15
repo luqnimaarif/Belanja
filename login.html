@@ -6,14 +6,33 @@
 </head>
 <body>
 
-<h1>Login</h1>
+<div class="box">
+  <h1>Login</h1>
 
-<input type="text" placeholder="Username"><br><br>
-<input type="password" placeholder="Password"><br><br>
+  <input type="text" id="username" placeholder="Username"><br><br>
+  <input type="password" id="password" placeholder="Password"><br><br>
 
-<a href="produk.html">
-  <button>Masuk</button>
-</a>
+  <button onclick="login()">Login</button>
+
+  <p>Belum punya akun? <a href="register.html">Daftar</a></p>
+</div>
+
+<script>
+function login() {
+  let user = document.getElementById("username").value;
+  let pass = document.getElementById("password").value;
+
+  let simpanUser = localStorage.getItem("username");
+  let simpanPass = localStorage.getItem("password");
+
+  if(user === simpanUser && pass === simpanPass){
+      alert("Login berhasil!");
+      window.location.href = "produk.html";
+  } else {
+      alert("Username atau password salah!");
+  }
+}
+</script>
 
 </body>
 </html>
