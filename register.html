@@ -6,19 +6,29 @@
 </head>
 <body>
 
-<h1>Daftar Akun</h1>
+<div class="box">
+  <h1>Daftar Akun</h1>
 
-<input type="text" placeholder="Nama"><br><br>
-<input type="email" placeholder="Email"><br><br>
-<input type="password" placeholder="Password"><br><br>
+  <input type="text" id="username" placeholder="Username"><br><br>
+  <input type="password" id="password" placeholder="Password"><br><br>
 
-<a href="login.html">
-  <button type="button">Daftar</button>
-</a>
+  <button onclick="daftar()">Daftar</button>
 
-<br><br>
+  <p>Sudah punya akun? <a href="login.html">Login</a></p>
+</div>
 
-<a href="index.html">Kembali</a>
+<script>
+function daftar() {
+  let user = document.getElementById("username").value;
+  let pass = document.getElementById("password").value;
+
+  localStorage.setItem("username", user);
+  localStorage.setItem("password", pass);
+
+  alert("Pendaftaran berhasil!");
+  window.location.href = "login.html";
+}
+</script>
 
 </body>
 </html>
