@@ -92,7 +92,7 @@
     <input type="text" id="harga" readonly>
 
     <label>Masukkan Kupon:</label>
-    <input type="text" id="kupon" placeholder="Contoh: LUQNI / YADIKA2">
+    <input type="text" id="kupon" placeholder="Contoh: XTJ1 / YADIKA2">
 
     <button onclick="cekKupon()">Gunakan Kupon</button>
 
@@ -190,7 +190,7 @@ function cekKupon(){
     return;
   }
 
-  if(kupon === "LUQNI"){
+  if(kupon === "XTJ1"){
     let diskon = hargaAsli * 0.30;
     total = hargaAsli - diskon;
     document.getElementById("diskonText").innerHTML =
