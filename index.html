@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TOKO LUQNI</title>
+  <title>BelanjaKu</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -34,14 +34,13 @@
 <div id="productPage" style="display:none;">
 
   <header>
-    <h1>🛒 TOKO LUQNI</h1>
+    <h1>🛒 BelanjaKu</h1>
   </header>
 
   <section class="products">
     <h2>Produk Kami</h2>
 
     <div class="product-grid">
-
       <div class="product-card" onclick="pilihBarang('Headset Gaming',150000)">
         <img src="headset.jpg">
         <h3>Headset Gaming</h3>
@@ -77,7 +76,6 @@
         <h3>Keyboard Gaming</h3>
         <p>Rp 600.000</p>
       </div>
-
     </div>
   </section>
 
@@ -92,12 +90,15 @@
     <input type="text" id="harga" readonly>
 
     <label>Masukkan Kupon:</label>
-    <input type="text" id="kupon" placeholder="Contoh: XTJ1 / YADIKA2">
+    <input type="text" id="kupon" placeholder="Contoh: LUQNI / YADIKA2">
 
     <button onclick="cekKupon()">Gunakan Kupon</button>
 
     <h3 id="diskonText">Diskon: Rp 0</h3>
     <h2 id="totalBayar">Total: Rp 0</h2>
+
+    <h3 id="ongkirText">Ongkir: Rp 0</h3>
+    <h2 id="grandTotal">Total + Ongkir: Rp 0</h2>
 
     <label>Metode Pembayaran:</label>
     <select id="metode">
@@ -161,10 +162,12 @@ function showRegister(){
   document.getElementById("registerPage").style.display = "flex";
 }
 
-// PILIH BARANG
+// DATA
 let hargaAsli = 0;
 let total = 0;
+let ongkir = 0;
 
+// PILIH BARANG
 function pilihBarang(nama, harga){
   document.getElementById("barang").value = nama;
   document.getElementById("harga").value = harga;
@@ -172,9 +175,18 @@ function pilihBarang(nama, harga){
   hargaAsli = harga;
   total = harga;
 
+  // Ongkir 5%
+  ongkir = harga * 0.05;
+
   document.getElementById("diskonText").innerHTML = "Diskon: Rp 0";
   document.getElementById("totalBayar").innerHTML =
     "Total: Rp " + total.toLocaleString("id-ID");
+
+  document.getElementById("ongkirText").innerHTML =
+    "Ongkir: Rp " + ongkir.toLocaleString("id-ID");
+
+  document.getElementById("grandTotal").innerHTML =
+    "Total + Ongkir: Rp " + (total + ongkir).toLocaleString("id-ID");
 
   document.querySelector(".checkout").scrollIntoView({
     behavior: "smooth"
@@ -190,17 +202,15 @@ function cekKupon(){
     return;
   }
 
-  if(kupon === "XTJ1"){
-    let diskon = hargaAsli * 0.30;
-    total = hargaAsli - diskon;
+  if(kupon === "LUQNI"){
+    total = hargaAsli - (hargaAsli * 0.30);
     document.getElementById("diskonText").innerHTML =
-      "Diskon 30%: Rp " + diskon.toLocaleString("id-ID");
+      "Diskon 30%";
   }
   else if(kupon === "YADIKA2"){
-    let diskon = hargaAsli * 0.50;
-    total = hargaAsli - diskon;
+    total = hargaAsli - (hargaAsli * 0.50);
     document.getElementById("diskonText").innerHTML =
-      "Diskon 50%: Rp " + diskon.toLocaleString("id-ID");
+      "Diskon 50%";
   }
   else{
     total = hargaAsli;
@@ -210,6 +220,9 @@ function cekKupon(){
 
   document.getElementById("totalBayar").innerHTML =
     "Total: Rp " + total.toLocaleString("id-ID");
+
+  document.getElementById("grandTotal").innerHTML =
+    "Total + Ongkir: Rp " + (total + ongkir).toLocaleString("id-ID");
 }
 
 // BAYAR
@@ -252,7 +265,7 @@ function bayar(){
   let pesan =
     "Pembayaran berhasil!\n" +
     "Metode: " + metode + "\n" +
-    "Total: Rp " + total.toLocaleString("id-ID");
+    "Total: Rp " + (total + ongkir).toLocaleString("id-ID");
 
   if(metode !== "COD"){
     pesan += "\nNomor: " + nomor;
