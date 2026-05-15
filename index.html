@@ -43,37 +43,37 @@
     <div class="product-grid">
 
       <div class="product-card" onclick="pilihBarang('Headset Gaming',150000)">
-        <img src="headset.jpg" alt="Headset">
+        <img src="headset.jpg">
         <h3>Headset Gaming</h3>
         <p>Rp 150.000</p>
       </div>
 
       <div class="product-card" onclick="pilihBarang('Kursi Gaming',900000)">
-        <img src="kursi.jpg" alt="Kursi">
+        <img src="kursi.jpg">
         <h3>Kursi Gaming</h3>
         <p>Rp 900.000</p>
       </div>
 
       <div class="product-card" onclick="pilihBarang('Mouse Gaming',450000)">
-        <img src="mouse.jpg" alt="Mouse">
+        <img src="mouse.jpg">
         <h3>Mouse Gaming</h3>
         <p>Rp 450.000</p>
       </div>
 
       <div class="product-card" onclick="pilihBarang('Monitor',3000000)">
-        <img src="monitor.jpg" alt="Monitor">
+        <img src="monitor.jpg">
         <h3>Monitor</h3>
         <p>Rp 3.000.000</p>
       </div>
 
       <div class="product-card" onclick="pilihBarang('Keyboard',250000)">
-        <img src="keyboard.jpg" alt="Keyboard">
+        <img src="keyboard.jpg">
         <h3>Keyboard</h3>
         <p>Rp 250.000</p>
       </div>
 
       <div class="product-card" onclick="pilihBarang('Keyboard Gaming',600000)">
-        <img src="keyboard gaming.jpg" alt="Keyboard Gaming">
+        <img src="keyboard gaming.jpg">
         <h3>Keyboard Gaming</h3>
         <p>Rp 600.000</p>
       </div>
@@ -101,12 +101,16 @@
 
     <label>Metode Pembayaran:</label>
     <select id="metode">
-      <option>DANA</option>
-      <option>GoPay</option>
-      <option>OVO</option>
-      <option>Transfer Bank</option>
-      <option>COD</option>
+      <option value="">Pilih Metode</option>
+      <option value="DANA">DANA</option>
+      <option value="GoPay">GoPay</option>
+      <option value="OVO">OVO</option>
+      <option value="Transfer Bank">Transfer Bank</option>
+      <option value="COD">COD</option>
     </select>
+
+    <label>Nomor Pembayaran (E-Wallet / Rekening Bank):</label>
+    <input type="text" id="nomorEwallet" placeholder="Contoh: 08123456789">
 
     <button onclick="bayar()">Bayar Sekarang</button>
   </section>
@@ -172,7 +176,6 @@ function pilihBarang(nama, harga){
   document.getElementById("totalBayar").innerHTML =
     "Total: Rp " + total.toLocaleString("id-ID");
 
-  // Scroll ke checkout otomatis
   document.querySelector(".checkout").scrollIntoView({
     behavior: "smooth"
   });
@@ -201,7 +204,8 @@ function cekKupon(){
   }
   else{
     total = hargaAsli;
-    document.getElementById("diskonText").innerHTML = "Kupon tidak valid";
+    document.getElementById("diskonText").innerHTML =
+      "Kupon tidak valid";
   }
 
   document.getElementById("totalBayar").innerHTML =
@@ -216,12 +220,45 @@ function bayar(){
   }
 
   let metode = document.getElementById("metode").value;
+  let nomor = document.getElementById("nomorEwallet").value;
 
-  alert(
+  if(metode === ""){
+    alert("Pilih metode pembayaran dulu!");
+    return;
+  }
+
+  if(
+    (metode === "DANA" ||
+     metode === "GoPay" ||
+     metode === "OVO" ||
+     metode === "Transfer Bank")
+    && nomor === ""
+  ){
+    alert("Masukkan nomor pembayaran!");
+    return;
+  }
+
+  if(
+    (metode === "DANA" ||
+     metode === "GoPay" ||
+     metode === "OVO" ||
+     metode === "Transfer Bank")
+    && nomor.length < 10
+  ){
+    alert("Nomor tidak valid!");
+    return;
+  }
+
+  let pesan =
     "Pembayaran berhasil!\n" +
     "Metode: " + metode + "\n" +
-    "Total: Rp " + total.toLocaleString("id-ID")
-  );
+    "Total: Rp " + total.toLocaleString("id-ID");
+
+  if(metode !== "COD"){
+    pesan += "\nNomor: " + nomor;
+  }
+
+  alert(pesan);
 }
 </script>
 
