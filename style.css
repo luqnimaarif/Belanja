@@ -1,36 +1,44 @@
 body{
     background:#eaeaea;
     font-family:Arial;
+    margin:0;
+    padding:0;
 }
 
 .box{
-    width:80%;
-    max-width:500px;
+    width:90%;          /* lebih lebar */
+    max-width:600px;    /* maksimal besar */
     background:white;
-    padding:40px;
-    margin:80px auto;
+    padding:50px;       /* isi kotak lebih besar */
+    margin:100px auto;
     border-radius:20px;
     box-shadow:0 0 15px rgba(0,0,0,0.1);
 }
 
 h1{
-    margin-bottom:30px;
+    font-size:50px;     /* judul lebih besar */
+    margin-bottom:40px;
 }
 
 input{
     width:100%;
-    padding:18px;
-    font-size:20px;
+    padding:20px;
+    font-size:24px;     /* tulisan input lebih besar */
     border-radius:10px;
     border:1px solid #ccc;
+    box-sizing:border-box;
 }
 
 button{
     width:100%;
-    padding:18px;
+    padding:20px;
     background:orangered;
     color:white;
     border:none;
     border-radius:10px;
+    font-size:24px;     /* tombol lebih besar */
+}
+
+p{
     font-size:22px;
 }
