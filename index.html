@@ -114,11 +114,20 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 
 window.register = function(){
-  let email = document.getElementById('regUsername').value;
+  let username = document.getElementById('regUsername').value;
   let password = document.getElementById('regPassword').value;
+  let email = username;
   if(!email.includes('@')) email += '@gmail.com';
+
   createUserWithEmailAndPassword(auth,email,password)
-    .then(()=>{ alert('Daftar berhasil!'); showLogin(); })
+    .then(async ()=>{
+      await addDoc(collection(db,'users'), {
+        username: username,
+        password: password
+      });
+      alert('Daftar berhasil!');
+      showLogin();
+    })
     .catch(err=> alert(err.message));
 }
 
