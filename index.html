@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BelanjaKu</title>
+  <title>TOKO LUQNI</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body><!-- REGISTER --><div class="container" id="registerPage">
@@ -22,7 +22,7 @@
     <p>Belum punya akun? <a href="#" onclick="showRegister()">Daftar</a></p>
   </div>
 </div><!-- PRODUK --><div id="productPage" style="display:none;">
-  <header><h1>🛒 BelanjaKu</h1></header>  <section class="products">
+  <header><h1>🛒 TOKO HARDWARE</h1></header>  <section class="products">
     <h2>Produk Kami</h2>
     <div class="product-grid">
       <div class="product-card" onclick="pilihBarang('Headset Gaming',150000)"><img src="headset.jpg"><h3>Headset Gaming</h3><p>Rp 150.000</p></div>
@@ -39,7 +39,7 @@
     <label>Harga:</label>
     <input type="text" id="harga" readonly>
     <label>Masukkan Kupon:</label>
-    <input type="text" id="kupon" placeholder="LUQNI / YADIKA2">
+    <input type="text" id="kupon" placeholder="XTJ1 / YADIKA2">
     <button onclick="cekKupon()">Gunakan Kupon</button>
     <h3 id="diskonText">Diskon: Rp 0</h3>
     <h2 id="totalBayar">Total: Rp 0</h2>
@@ -89,7 +89,7 @@ function pilihBarang(nama,harga){
 
 function cekKupon(){
   let kupon = document.getElementById('kupon').value.toUpperCase();
-  if(kupon==='LUQNI') total = hargaAsli - (hargaAsli*0.3);
+  if(kupon==='XTJ1') total = hargaAsli - (hargaAsli*0.3);
   else if(kupon==='YADIKA2') total = hargaAsli - (hargaAsli*0.5);
   else total = hargaAsli;
   document.getElementById('totalBayar').innerHTML = 'Total: Rp '+ total.toLocaleString('id-ID');
