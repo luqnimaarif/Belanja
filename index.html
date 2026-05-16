@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TOKO LUQNI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BelanjaKu</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-
-<!-- DAFTAR -->
-<div class="container" id="registerPage">
+<body><!-- REGISTER --><div class="container" id="registerPage">
   <div class="card">
     <h1>Daftar Akun</h1>
     <input type="text" id="regUsername" placeholder="Username">
@@ -17,10 +13,7 @@
     <button onclick="register()">Daftar</button>
     <p>Sudah punya akun? <a href="#" onclick="showLogin()">Login</a></p>
   </div>
-</div>
-
-<!-- LOGIN -->
-<div class="container" id="loginPage" style="display:none;">
+</div><!-- LOGIN --><div class="container" id="loginPage" style="display:none;">
   <div class="card">
     <h1>Login</h1>
     <input type="text" id="loginUsername" placeholder="Username">
@@ -28,252 +21,136 @@
     <button onclick="login()">Login</button>
     <p>Belum punya akun? <a href="#" onclick="showRegister()">Daftar</a></p>
   </div>
-</div>
-
-<!-- PRODUK -->
-<div id="productPage" style="display:none;">
-
-  <header>
-    <h1>🛒 Toko Hardware Komputer</h1>
-  </header>
-
-  <section class="products">
+</div><!-- PRODUK --><div id="productPage" style="display:none;">
+  <header><h1>🛒 BelanjaKu</h1></header>  <section class="products">
     <h2>Produk Kami</h2>
-
     <div class="product-grid">
-      <div class="product-card" onclick="pilihBarang('Headset Gaming',150000)">
-        <img src="headset.jpg">
-        <h3>Headset Gaming</h3>
-        <p>Rp 150.000</p>
-      </div>
-
-      <div class="product-card" onclick="pilihBarang('Kursi Gaming',900000)">
-        <img src="kursi.jpg">
-        <h3>Kursi Gaming</h3>
-        <p>Rp 900.000</p>
-      </div>
-
-      <div class="product-card" onclick="pilihBarang('Mouse Gaming',450000)">
-        <img src="mouse.jpg">
-        <h3>Mouse Gaming</h3>
-        <p>Rp 450.000</p>
-      </div>
-
-      <div class="product-card" onclick="pilihBarang('Monitor',3000000)">
-        <img src="monitor.jpg">
-        <h3>Monitor</h3>
-        <p>Rp 3.000.000</p>
-      </div>
-
-      <div class="product-card" onclick="pilihBarang('Keyboard',250000)">
-        <img src="keyboard.jpg">
-        <h3>Keyboard</h3>
-        <p>Rp 250.000</p>
-      </div>
-
-      <div class="product-card" onclick="pilihBarang('Keyboard Gaming',600000)">
-        <img src="keyboard gaming.jpg">
-        <h3>Keyboard Gaming</h3>
-        <p>Rp 600.000</p>
-      </div>
+      <div class="product-card" onclick="pilihBarang('Headset Gaming',150000)"><img src="headset.jpg"><h3>Headset Gaming</h3><p>Rp 150.000</p></div>
+      <div class="product-card" onclick="pilihBarang('Kursi Gaming',900000)"><img src="kursi.jpg"><h3>Kursi Gaming</h3><p>Rp 900.000</p></div>
+      <div class="product-card" onclick="pilihBarang('Mouse Gaming',450000)"><img src="mouse.jpg"><h3>Mouse Gaming</h3><p>Rp 450.000</p></div>
+      <div class="product-card" onclick="pilihBarang('Monitor',3000000)"><img src="monitor.jpg"><h3>Monitor</h3><p>Rp 3.000.000</p></div>
+      <div class="product-card" onclick="pilihBarang('Keyboard',250000)"><img src="keyboard.jpg"><h3>Keyboard</h3><p>Rp 250.000</p></div>
+      <div class="product-card" onclick="pilihBarang('Keyboard Gaming',600000)"><img src="keyboard gaming.jpg"><h3>Keyboard Gaming</h3><p>Rp 600.000</p></div>
     </div>
-  </section>
-
-  <!-- CHECKOUT -->
-  <section class="checkout">
+  </section>  <section class="checkout">
     <h2>🛒 Checkout Barang</h2>
-
     <label>Nama Barang:</label>
     <input type="text" id="barang" readonly>
-
     <label>Harga:</label>
     <input type="text" id="harga" readonly>
-
     <label>Masukkan Kupon:</label>
-    <input type="text" id="kupon" placeholder="Contoh: XTJ1 / YADIKA2">
-
+    <input type="text" id="kupon" placeholder="LUQNI / YADIKA2">
     <button onclick="cekKupon()">Gunakan Kupon</button>
-
     <h3 id="diskonText">Diskon: Rp 0</h3>
     <h2 id="totalBayar">Total: Rp 0</h2>
-
     <h3 id="ongkirText">Ongkir: Rp 0</h3>
-    <h2 id="grandTotal">Total + Ongkir: Rp 0</h2>
+    <h2 id="grandTotal">Total + Ongkir: Rp 0</h2><label>Metode Pembayaran:</label>
+<select id="metode">
+  <option value="">Pilih Metode</option>
+  <option>DANA</option>
+  <option>GoPay</option>
+  <option>OVO</option>
+  <option>Transfer Bank</option>
+  <option>COD</option>
+</select>
 
-    <label>Metode Pembayaran:</label>
-    <select id="metode">
-      <option value="">Pilih Metode</option>
-      <option value="DANA">DANA</option>
-      <option value="GoPay">GoPay</option>
-      <option value="OVO">OVO</option>
-      <option value="Transfer Bank">Transfer Bank</option>
-      <option value="COD">COD</option>
-    </select>
+<label>Nomor Pembayaran:</label>
+<input type="text" id="nomorEwallet" placeholder="08123456789">
 
-    <label>Nomor Pembayaran (E-Wallet / Rekening Bank):</label>
-    <input type="text" id="nomorEwallet" placeholder="Contoh: 08123456789">
+<button onclick="bayar()">Bayar Sekarang</button>
 
-    <button onclick="bayar()">Bayar Sekarang</button>
   </section>
-
-</div>
-
-<script>
-// REGISTER
-function register(){
-  let username = document.getElementById("regUsername").value;
-  let password = document.getElementById("regPassword").value;
-
-  if(username === "" || password === ""){
-    alert("Isi semua dulu!");
-    return;
-  }
-
-  localStorage.setItem("username", username);
-  localStorage.setItem("password", password);
-
-  alert("Daftar berhasil!");
-  showLogin();
-}
-
-// LOGIN
-function login(){
-  let username = document.getElementById("loginUsername").value;
-  let password = document.getElementById("loginPassword").value;
-
-  let savedUser = localStorage.getItem("username");
-  let savedPass = localStorage.getItem("password");
-
-  if(username === savedUser && password === savedPass){
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("productPage").style.display = "block";
-  } else {
-    alert("Username atau password salah!");
-  }
-}
-
+</div><script>
 function showLogin(){
-  document.getElementById("registerPage").style.display = "none";
-  document.getElementById("loginPage").style.display = "flex";
+  document.getElementById('registerPage').style.display='none';
+  document.getElementById('loginPage').style.display='flex';
 }
-
 function showRegister(){
-  document.getElementById("loginPage").style.display = "none";
-  document.getElementById("registerPage").style.display = "flex";
+  document.getElementById('loginPage').style.display='none';
+  document.getElementById('registerPage').style.display='flex';
 }
 
-// DATA
 let hargaAsli = 0;
 let total = 0;
 let ongkir = 0;
 
-// PILIH BARANG
-function pilihBarang(nama, harga){
-  document.getElementById("barang").value = nama;
-  document.getElementById("harga").value = harga;
-
+function pilihBarang(nama,harga){
+  document.getElementById('barang').value = nama;
+  document.getElementById('harga').value = harga;
   hargaAsli = harga;
   total = harga;
-
-  // Ongkir 5%
   ongkir = harga * 0.05;
-
-  document.getElementById("diskonText").innerHTML = "Diskon: Rp 0";
-  document.getElementById("totalBayar").innerHTML =
-    "Total: Rp " + total.toLocaleString("id-ID");
-
-  document.getElementById("ongkirText").innerHTML =
-    "Ongkir: Rp " + ongkir.toLocaleString("id-ID");
-
-  document.getElementById("grandTotal").innerHTML =
-    "Total + Ongkir: Rp " + (total + ongkir).toLocaleString("id-ID");
-
-  document.querySelector(".checkout").scrollIntoView({
-    behavior: "smooth"
-  });
+  document.getElementById('diskonText').innerHTML = 'Diskon: Rp 0';
+  document.getElementById('totalBayar').innerHTML = 'Total: Rp '+ total.toLocaleString('id-ID');
+  document.getElementById('ongkirText').innerHTML = 'Ongkir: Rp '+ ongkir.toLocaleString('id-ID');
+  document.getElementById('grandTotal').innerHTML = 'Total + Ongkir: Rp '+ (total+ongkir).toLocaleString('id-ID');
+  document.querySelector('.checkout').scrollIntoView({behavior:'smooth'});
 }
 
-// KUPON
 function cekKupon(){
-  let kupon = document.getElementById("kupon").value.toUpperCase();
+  let kupon = document.getElementById('kupon').value.toUpperCase();
+  if(kupon==='LUQNI') total = hargaAsli - (hargaAsli*0.3);
+  else if(kupon==='YADIKA2') total = hargaAsli - (hargaAsli*0.5);
+  else total = hargaAsli;
+  document.getElementById('totalBayar').innerHTML = 'Total: Rp '+ total.toLocaleString('id-ID');
+  document.getElementById('grandTotal').innerHTML = 'Total + Ongkir: Rp '+ (total+ongkir).toLocaleString('id-ID');
+}
+</script><script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  if(hargaAsli === 0){
-    alert("Pilih barang dulu!");
-    return;
-  }
+const firebaseConfig = {
+  apiKey: "AIzaSyDWHozBq5_ueq7sF2WiQ_0ttEOssgRNWFc",
+  authDomain: "toko-luqni.firebaseapp.com",
+  projectId: "toko-luqni",
+  storageBucket: "toko-luqni.firebasestorage.app",
+  messagingSenderId: "797686760965",
+  appId: "1:797686760965:web:e6c63477246775846f3e6c"
+};
 
-  if(kupon === "XTJ1"){
-    total = hargaAsli - (hargaAsli * 0.30);
-    document.getElementById("diskonText").innerHTML =
-      "Diskon 30%";
-  }
-  else if(kupon === "YADIKA2"){
-    total = hargaAsli - (hargaAsli * 0.50);
-    document.getElementById("diskonText").innerHTML =
-      "Diskon 50%";
-  }
-  else{
-    total = hargaAsli;
-    document.getElementById("diskonText").innerHTML =
-      "Kupon tidak valid";
-  }
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-  document.getElementById("totalBayar").innerHTML =
-    "Total: Rp " + total.toLocaleString("id-ID");
-
-  document.getElementById("grandTotal").innerHTML =
-    "Total + Ongkir: Rp " + (total + ongkir).toLocaleString("id-ID");
+window.register = function(){
+  let email = document.getElementById('regUsername').value;
+  let password = document.getElementById('regPassword').value;
+  if(!email.includes('@')) email += '@gmail.com';
+  createUserWithEmailAndPassword(auth,email,password)
+    .then(()=>{ alert('Daftar berhasil!'); showLogin(); })
+    .catch(err=> alert(err.message));
 }
 
-// BAYAR
-function bayar(){
-  if(hargaAsli === 0){
-    alert("Pilih barang dulu!");
-    return;
-  }
-
-  let metode = document.getElementById("metode").value;
-  let nomor = document.getElementById("nomorEwallet").value;
-
-  if(metode === ""){
-    alert("Pilih metode pembayaran dulu!");
-    return;
-  }
-
-  if(
-    (metode === "DANA" ||
-     metode === "GoPay" ||
-     metode === "OVO" ||
-     metode === "Transfer Bank")
-    && nomor === ""
-  ){
-    alert("Masukkan nomor pembayaran!");
-    return;
-  }
-
-  if(
-    (metode === "DANA" ||
-     metode === "GoPay" ||
-     metode === "OVO" ||
-     metode === "Transfer Bank")
-    && nomor.length < 10
-  ){
-    alert("Nomor tidak valid!");
-    return;
-  }
-
-  let pesan =
-    "Pembayaran berhasil!\n" +
-    "Metode: " + metode + "\n" +
-    "Total: Rp " + (total + ongkir).toLocaleString("id-ID");
-
-  if(metode !== "COD"){
-    pesan += "\nNomor: " + nomor;
-  }
-
-  alert(pesan);
+window.login = function(){
+  let email = document.getElementById('loginUsername').value;
+  let password = document.getElementById('loginPassword').value;
+  if(!email.includes('@')) email += '@gmail.com';
+  signInWithEmailAndPassword(auth,email,password)
+    .then(()=>{
+      document.getElementById('loginPage').style.display='none';
+      document.getElementById('productPage').style.display='block';
+    })
+    .catch(()=> alert('Username atau password salah!'));
 }
-</script>
 
-</body>
+window.bayar = async function(){
+  let metode = document.getElementById('metode').value;
+  let nomor = document.getElementById('nomorEwallet').value;
+  if(metode==="") return alert('Pilih metode pembayaran!');
+  if(metode!=="COD" && nomor==="") return alert('Masukkan nomor pembayaran!');
+
+  await addDoc(collection(db,'pesanan'), {
+    barang: document.getElementById('barang').value,
+    harga: total,
+    ongkir: ongkir,
+    totalBayar: total + ongkir,
+    metode: metode,
+    nomor: nomor,
+    waktu: new Date()
+  });
+
+  alert('Pembayaran berhasil & pesanan tersimpan!');
+}
+</script></body>
 </html>
